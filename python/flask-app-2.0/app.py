@@ -14,7 +14,7 @@ books = [
 # endpoint to get all books
 @app.route('/reading-list/books', methods=['GET'])
 def get_books():
-    return jsonify({'books': books})
+    return "Hello"
 
 if __name__ == '__main__':
     app.run()

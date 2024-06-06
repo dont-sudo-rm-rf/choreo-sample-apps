@@ -1,9 +1,20 @@
 openapi: 3.0.3
 info:
-  title: Greeting Service
+  title: greeting service
+  description: >-
+    greeting service
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.0
+externalDocs:
+  description: Choreo
+  url: https://choreo.dev
 servers:
   - url: http://localhost:5000
+tags:
+  - name: greet
+    description: In-memory greet
 paths:
   /greeter/hello:
     get:
@@ -13,9 +24,44 @@ paths:
         - greeting
       responses:
         '200':
-          description: Successful response
+          description: Successful operation
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                $ref: "#/components/schemas/StringArray"
+
+components:
+  schemas:
+    Key:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "my-id"
+    Status:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "read"
+    KeyValue:
+      type: object
+      required:
+        - name
+        - author
+        - status
+      properties:
+        name:
+          type: string
+          example: "my-name"
+        author:
+          type: string
+          example: "my-author"
+        status:
+          type: string
+          example: "read"
+    StringArray:
+      type: array
+      items:
+        type: string
 
