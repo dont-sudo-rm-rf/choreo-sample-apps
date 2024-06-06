@@ -11,8 +11,7 @@ RUN pip3 install -r requirements.txt
 COPY . .
 RUN ls
 
-# Run tests
-CMD ["python3", "test_app.py", "-v"]
+
 
 # Production stage
 FROM python:alpine AS production
