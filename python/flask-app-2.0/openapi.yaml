@@ -27,57 +27,5 @@ paths:
       responses:
         "200":
           description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StringArray"
-    post:
-      summary: Insert a new book
-      operationId: InstallNewBook
-      responses:
-        "200":
-          description: Successful operation
-        "400":
-          description: Invalid request body
-      tags:
-        - books
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/KeyValue"
-
-components:
-  schemas:
-    Key:
-      type: object
-      properties:
-        id:
-          type: string
-          example: "my-id"
-    Status:
-      type: object
-      properties:
-        status:
-          type: string
-          example: "read"
-    KeyValue:
-      type: object
-      required:
-        - name
-        - author
-        - status
-      properties:
-        name:
-          type: string
-          example: "my-name"
-        author:
-          type: string
-          example: "my-author"
-        status:
-          type: string
-          example: "read"
-    StringArray:
-      type: array
-      items:
-        type: string
+  
+    
