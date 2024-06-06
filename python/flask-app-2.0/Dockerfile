@@ -9,20 +9,6 @@ RUN pip3 install -r requirements.txt
 
 # Copy the application code
 COPY . .
-RUN ls
-
-
-
-# Production stage
-FROM python:alpine AS production
-
-WORKDIR /python-docker
-
-# Copy only the necessary files for production
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
-
-COPY . .
 
 # Create a new user with UID 10016
 RUN addgroup -g 10016 choreo && \
