@@ -16,7 +16,7 @@ tags:
   - name: greet
     description: In-memory greet
 paths:
-  /greeter/hello:
+  /hello:
     get:
       summary: Say hello
       description: Greet a person by name
@@ -24,44 +24,9 @@ paths:
         - greeting
       responses:
         '200':
-          description: Successful operation
+          description: Successful response
           content:
-            application/json:
+            text/plain:
               schema:
-                $ref: "#/components/schemas/StringArray"
-
-components:
-  schemas:
-    Key:
-      type: object
-      properties:
-        id:
-          type: string
-          example: "my-id"
-    Status:
-      type: object
-      properties:
-        status:
-          type: string
-          example: "read"
-    KeyValue:
-      type: object
-      required:
-        - name
-        - author
-        - status
-      properties:
-        name:
-          type: string
-          example: "my-name"
-        author:
-          type: string
-          example: "my-author"
-        status:
-          type: string
-          example: "read"
-    StringArray:
-      type: array
-      items:
-        type: string
+                type: string
 
