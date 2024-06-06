@@ -1,27 +1,22 @@
-# Use a Python base image
-FROM python:3.10-alpine
+FROM python:alpine
 
-# Set the working directory to /app
-WORKDIR /app
 
-# Copy your Python source files into the container
+WORKDIR /python-docker
+
+# Copy only the necessary files for production
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+
 COPY . .
 
-# Install any Python dependencies (if needed)
-# RUN pip install ...
+# Create a new user with UID 10016
+RUN addgroup -g 10016 choreo && \
+    adduser  --disabled-password  --no-create-home --uid 10016 --ingroup choreo choreouser
 
-# Create a user with a known UID/GID within range 10000-20000
-RUN adduser \
-    --disabled-password \
-    --gecos "" \
-    --home "/nonexistent" \
-    --shell "/sbin/nologin" \
-    --no-create-home \
-    --uid 10014 \
-    "choreo"
+# Switch to the new user
+USER 10016
 
-# Use the above created unprivileged user
-USER 10014
+EXPOSE 5000
 
-# Set the entrypoint to your Python script
-ENTRYPOINT ["python", "python-greeter.py"]
+# Start the Flask application
+CMD ["flask", "run", "--host=0.0.0.0"]

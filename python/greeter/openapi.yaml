@@ -3,14 +3,14 @@ info:
   title: Greeting Service
   version: 1.0.0
 paths:
-  /greeter/greet:
+  /greeter/hello:
     get:
-      summary: Greet a person
+      summary: Say hello
       description: Greet a person by name
       tags:
         - greeting
       parameters:
-        - name: name
+        - name: myname
           in: query
           description: Name of the person to greet
           required: false
@@ -23,5 +23,4 @@ paths:
             text/plain:
               schema:
                 type: string
-      deprecated: false
-      security: []
+
