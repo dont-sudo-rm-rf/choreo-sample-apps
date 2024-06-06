@@ -5,11 +5,8 @@ app = Flask(__name__)
 # endpoint to send greeting
 
 @app.route('/greeter/hello', methods=['GET'])
-def sayHello(myname):
-    if myname:
-        return f"Hello {myname}"
-    else:
-        return "Hello stranger!"
+def sayHello():
+    return "Hello user"
 
 
 if __name__ == '__main__':

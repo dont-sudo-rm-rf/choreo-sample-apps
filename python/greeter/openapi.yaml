@@ -9,13 +9,6 @@ paths:
       description: Greet a person by name
       tags:
         - greeting
-      parameters:
-        - name: myname
-          in: query
-          description: Name of the person to greet
-          required: false
-          schema:
-            type: string
       responses:
         '200':
           description: Successful response
