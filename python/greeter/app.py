@@ -10,3 +10,7 @@ def sayHello(myname):
         return f"Hello {myname}"
     else:
         return "Hello stranger!"
+
+
+if __name__ == '__main__':
+    app.run()
