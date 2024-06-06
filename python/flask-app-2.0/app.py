@@ -2,7 +2,14 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-books = []
+books = [
+    {
+      "author": "me",
+      "id": 1,
+      "name": "adam sandler",
+      "status": "read"
+    }
+  ]
 
 # helper function to generate IDs
 def generate_id():
